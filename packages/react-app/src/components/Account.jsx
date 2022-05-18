@@ -45,7 +45,7 @@ export default function Account({
   localProvider,
   mainnetProvider,
   price,
-  minimized,
+  minimized = true,
   web3Modal,
   loadWeb3Modal,
   logoutOfWeb3Modal,
