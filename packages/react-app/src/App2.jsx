@@ -283,7 +283,6 @@ function App(props) {
     useEffect(() => {
         const updateYourCollectibles = async () => {
             const collectibleUpdate = [];
-            console.log("📟 updateYourCollectibles balance", balance);
             for (let tokenIndex = 0; tokenIndex < balance; tokenIndex++) {
                 try {
                     console.log("GEtting token index", tokenIndex);
@@ -294,13 +293,15 @@ function App(props) {
 
                     const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
                     console.log("ipfsHash", ipfsHash);
-
-                    const jsonManifestBuffer = await getFromIPFS(ipfsHash);
-
+                    //   不请求ipfs
+                    //   const jsonManifestBuffer = await getFromIPFS(ipfsHash);
                     try {
-                        const jsonManifest = JSON.parse(jsonManifestBuffer.toString());
-                        console.log("jsonManifest", jsonManifest);
-                        collectibleUpdate.push({ id: tokenId, uri: tokenURI, owner: address, ...jsonManifest });
+                        // const jsonManifest = JSON.parse(jsonManifestBuffer.toString());
+                        // console.log("jsonManifest", jsonManifest);
+                        collectibleUpdate.push({
+                            id: tokenId, uri: tokenURI, owner: address,
+                            // ...jsonManifest
+                        });
                     } catch (e) {
                         console.log(e);
                     }
@@ -311,7 +312,6 @@ function App(props) {
             setYourCollectibles(collectibleUpdate);
         };
         updateYourCollectibles();
-        console.log("📟 updateYourCollectibles");
     }, [address, yourBalance]);
 
 
