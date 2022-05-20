@@ -5,7 +5,7 @@ const { config, ethers } = require("hardhat");
 const { utils } = require("ethers");
 const R = require("ramda");
 const ipfsAPI = require('ipfs-http-client');
-const ipfs = ipfsAPI.create({host: 'ipfs.infura.io', port: '5001', protocol: 'https' })
+const ipfs = ipfsAPI({host: 'ipfs.infura.io', port: '5001', protocol: 'https' })
 
 const delayMS = 1000 //sometimes xDAI needs a 6000ms break lol 😅
 
