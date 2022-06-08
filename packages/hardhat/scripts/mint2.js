@@ -27,6 +27,10 @@ const main = async () => {
     var itemId = await yourCollectible.mintItem(toAddress,"QmfVMAmNM1kDEBYrC2TPzQDoCRFH6F5tE1e9Mr4FkkR5Xr",{gasLimit:400000})
     console.info("itemId",itemId);
   
+  
+    var owner = await yourCollectible.owner();
+    console.info("owner",owner);
+    
     await sleep(delayMS)
     console.log("Transferring Ownership of YourCollectible to "+toAddress+"...")
     var transfer = await yourCollectible.transferOwnership(toAddress, { gasLimit: 400000 });
